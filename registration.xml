@@ -11,18 +11,29 @@
 	<version>0.0.1</version>
 
 	<files folder="site">
-		<filename>controller.php</filename>
-		<filename>registration.php</filename>
 		<folder>models</folder>
 		<folder>views</folder>
+		<filename>controller.php</filename>
+		<filename>registration.php</filename>
 	</files>
+
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_registration.ini</language>
+	</languages>
 
 	<administration>
 		<menu>COM_REGISTRATION</menu>
+
 		<files folder="admin">
 			<filename>controller.php</filename>
 			<filename>registration.php</filename>
 		</files>
+
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_registration.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_registration.sys.ini</language>
+		</languages>
+
 	</administration>
 
 </extension>
