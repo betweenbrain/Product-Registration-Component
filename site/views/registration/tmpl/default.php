@@ -18,7 +18,6 @@
 			echo $field->input;
 		else:
 			?>
-			<?php echo $field->input ?>
 			<dt>
 				<?php echo $field->label; ?>
 			</dt>
