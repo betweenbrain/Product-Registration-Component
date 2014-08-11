@@ -10,6 +10,20 @@
 	<name>com_registration</name>
 	<version>0.0.1</version>
 
+	<scriptfile>script.php</scriptfile>
+
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
 	<files folder="site">
 		<folder>models</folder>
 		<folder>views</folder>
@@ -25,6 +39,7 @@
 		<menu>COM_REGISTRATION</menu>
 
 		<files folder="admin">
+			<folder>sql</folder>
 			<filename>controller.php</filename>
 			<filename>registration.php</filename>
 		</files>
