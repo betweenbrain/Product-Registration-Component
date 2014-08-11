@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields
+			name="registration">
+		<fieldset
+				name="registration">
+			<field
+					name="firstname"
+					type="text"
+					id="input-firstname"
+					required="true"
+					label="COM_REGISTRATION_FIRSTNAME_LABEL"
+					description="COM_REGISTRATION_FIRSTNAME_DESC" />
+			<field
+					name="lastname"
+					type="text"
+					id="input-lastname"
+					required="true"
+					label="COM_REGISTRATION_LASTNAME_LABEL"
+					description="COM_REGISTRATION_LASTNAME_DESC" />
+		</fieldset>
+	</fields>
+</form>

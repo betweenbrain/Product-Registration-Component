@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="component" method="upgrade">
+	<author>Matt Thomas</author>
+	<authorEmail>matt@betweenbrain.com</authorEmail>
+	<authorUrl>http://betweenbrain.com</authorUrl>
+	<copyright>(C) 2014 betweenbrain llc. All rights reserved.</copyright>
+	<creationDate>August 11, 2014</creationDate>
+	<description>COM_REGISTRATION_DESC</description>
+	<license>GNU/GPL v2 or later</license>
+	<name>com_registration</name>
+	<version>0.0.1</version>
+
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>registration.php</filename>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+
+	<administration>
+		<menu>COM_REGISTRATION</menu>
+		<files folder="admin">
+			<filename>controller.php</filename>
+			<filename>registration.php</filename>
+		</files>
+	</administration>
+
+</extension>
