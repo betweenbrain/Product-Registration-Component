@@ -33,51 +33,56 @@ class RegistrationModelRegister extends JModelForm
 
 	}
 
+	/**
+	 * Gets the database table
+	 *
+	 * @param string $type
+	 * @param string $prefix
+	 * @param array  $config
+	 *
+	 * @return mixed
+	 */
+	public function getTable($type = 'Registration', $prefix = 'RegistrationTable', $config = array())
+	{
+		$this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
+
+		return JTable::getInstance($type, $prefix, $config);
+	}
+
+	/**
+	 * Submit data to the table
+	 *
+	 * @param $data
+	 *
+	 * @return bool
+	 */
 	public function submit($data)
 	{
 
-		$db      = JFactory::getDbo();
-		$query   = $db->getQuery(true);
-		$columns = array(
-			'firstName',
-			'lastName',
-			'email',
-			'company',
-			'country',
-			'address',
-			'productType',
-			'serialNumber',
-			'purchasedFrom',
-			'purchaseDate'
+		// Create the array of new/amended fields/properties.
+		$values = array(
+			'firstName'     => $data['registration']['firstName'],
+			'lastName'      => $data['registration']['lastName'],
+			'email'         => $data['registration']['email'],
+			'company'       => $data['registration']['company'],
+			'country'       => $data['registration']['country'],
+			'address'       => $data['registration']['address'],
+			'productType'   => $data['registration']['productType'],
+			'serialNumber'  => $data['registration']['serialNumber'],
+			'purchasedFrom' => $data['registration']['purchasedFrom'],
+			'purchasedDate' => $data['registration']['purchaseDate']
 		);
-		$values  = array(
-			$db->quote($data['registration']['firstName']),
-			$db->quote($data['registration']['lastName']),
-			$db->quote($data['registration']['email']),
-			$db->quote($data['registration']['company']),
-			$db->quote($data['registration']['country']),
-			$db->quote($data['registration']['address']),
-			$db->quote($data['registration']['productType']),
-			$db->quote($data['registration']['serialNumber']),
-			$db->quote($data['registration']['purchasedFrom']),
-			$db->quote($data['registration']['purchaseDate'])
-		);
-		$query
-			->insert($db->quoteName('#__registrations'))
-			->columns($db->quoteName($columns))
-			->values(implode(',', $values));
 
-		$db->setQuery($query);
+		// Get the table object from the model.
+		$table = $this->getTable();
 
-		if (!$db->query())
+		if ($table->save($values) === true)
 		{
-			JError::raiseError(500, $db->getErrorMsg());
-
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 }

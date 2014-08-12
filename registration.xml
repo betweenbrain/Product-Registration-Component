@@ -41,6 +41,7 @@
 
 		<files folder="admin">
 			<folder>sql</folder>
+			<folder>tables</folder>
 			<filename>controller.php</filename>
 			<filename>registration.php</filename>
 		</files>
