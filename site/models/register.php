@@ -70,7 +70,7 @@ class RegistrationModelRegister extends JModelForm
 			'productType'   => $data['registration']['productType'],
 			'serialNumber'  => $data['registration']['serialNumber'],
 			'purchasedFrom' => $data['registration']['purchasedFrom'],
-			'purchasedDate' => $data['registration']['purchaseDate']
+			'purchaseDate' => $data['registration']['purchaseDate']
 		);
 
 		// Get the table object from the model.
