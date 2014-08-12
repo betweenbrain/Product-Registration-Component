@@ -9,7 +9,7 @@
  * License    GNU GPL v2 or later
  */
 ?>
-<dl>
+<form action="index.php" method="post" name="adminForm">
 	<?php
 	// Iterate through the fields and display them.
 	foreach ($this->form->getFieldset() as $field):
@@ -18,14 +18,18 @@
 			echo $field->input;
 		else:
 			?>
-			<dt>
-				<?php echo $field->label; ?>
-			</dt>
-			<dd<?php echo ($field->type == 'Editor' || $field->type == 'Textarea') ? ' style="clear: both; margin: 0;"' : '' ?>>
-				<?php echo $field->input ?>
-			</dd>
+
+			<?php echo $field->label; ?>
+
+
+			<?php echo $field->input ?>
+
 		<?php
 		endif;
 	endforeach;
 	?>
-</dl>
+	<input type="submit">
+	<input type="hidden" name="option" value="com_registration" />
+	<input type="hidden" name="task" value="registration.save" />
+	<?php echo JHtml::_('form.token'); ?>
+</form>
