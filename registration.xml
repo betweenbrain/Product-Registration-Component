@@ -40,8 +40,10 @@
 		<menu>COM_REGISTRATION</menu>
 
 		<files folder="admin">
+			<folder>models</folder>
 			<folder>sql</folder>
 			<folder>tables</folder>
+			<folder>views</folder>
 			<filename>controller.php</filename>
 			<filename>registration.php</filename>
 		</files>

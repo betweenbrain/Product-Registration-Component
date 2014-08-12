@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields
+			name="registrations">
+		<fieldset
+				name="registrations">
+			<field
+					name="startDate"
+					type="calendar"
+					default=""
+					label="COM_REGISTRATION_STARTDATE_LABEL"
+					description="COM_REGISTRATION_STARTDATE_DESC" />
+			<field
+					name="endDate"
+					type="calendar"
+					default="NOW"
+					label="COM_REGISTRATION_ENDDATE_LABEL"
+					description="COM_REGISTRATION_ENDATE_DESC" />
+		</fieldset>
+	</fields>
+</form>
