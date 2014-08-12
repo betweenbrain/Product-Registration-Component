@@ -22,7 +22,6 @@ class RegistrationModelRegistrations extends JModelList
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
-
 		$form = $this->loadForm('com_registration.registrations', 'registrations', array('control' => 'jform', 'load_data' => true));
 
 		if (empty($form))
@@ -66,7 +65,8 @@ class RegistrationModelRegistrations extends JModelList
 				)
 			)
 			->from($db->quoteName('#__registrations'))
-			->where($db->quoteName('purchaseDate') . ' > ' . $db->quote($input['registrations']['startDate']));
+			->where($db->quoteName('purchaseDate') . ' > ' . $db->quote($input['registrations']['startDate'])
+				. ' AND ' . $db->quoteName('purchaseDate') . ' < ' . $db->quote($input['registrations']['endDate']));
 
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
