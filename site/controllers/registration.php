@@ -31,7 +31,7 @@ class RegistrationControllerRegistration extends RegistrationController
 		$data = JFactory::getApplication()->input->get('jform', array(), 'array');
 
 		// Initialise variables.
-		$model = $this->getModel('register');
+		$model = $this->getModel('register', 'RegistrationModel');
 
 		// Now update the loaded data to the database via a function in the model
 		$registration = $model->submit($data);
