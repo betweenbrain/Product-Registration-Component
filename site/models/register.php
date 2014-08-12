@@ -38,8 +38,30 @@ class RegistrationModelRegister extends JModelForm
 
 		$db      = JFactory::getDbo();
 		$query   = $db->getQuery(true);
-		$columns = array('firstName', 'lastName');
-		$values  = array($db->quote($data['registration']['firstname']), $db->quote($data['registration']['lastname']));
+		$columns = array(
+			'firstName',
+			'lastName',
+			'email',
+			'company',
+			'country',
+			'address',
+			'productType',
+			'serialNumber',
+			'purchasedFrom',
+			'purchaseDate'
+		);
+		$values  = array(
+			$db->quote($data['registration']['firstName']),
+			$db->quote($data['registration']['lastName']),
+			$db->quote($data['registration']['email']),
+			$db->quote($data['registration']['company']),
+			$db->quote($data['registration']['country']),
+			$db->quote($data['registration']['address']),
+			$db->quote($data['registration']['productType']),
+			$db->quote($data['registration']['serialNumber']),
+			$db->quote($data['registration']['purchasedFrom']),
+			$db->quote($data['registration']['purchaseDate'])
+		);
 		$query
 			->insert($db->quoteName('#__registrations'))
 			->columns($db->quoteName($columns))

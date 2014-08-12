@@ -5,16 +5,78 @@
 		<fieldset
 				name="registration">
 			<field
-					name="firstname"
+					name="firstName"
 					type="text"
-					id="input-firstname"
 					required="true"
 					label="COM_REGISTRATION_FIRSTNAME_LABEL"
 					description="COM_REGISTRATION_FIRSTNAME_DESC" />
 			<field
-					name="lastname"
+					name="lastName"
 					type="text"
-					id="input-lastname"
+					required="true"
+					label="COM_REGISTRATION_LASTNAME_LABEL"
+					description="COM_REGISTRATION_LASTNAME_DESC" />
+			<field
+					name="email"
+					type="email"
+					label="JGLOBAL_EMAIL"
+					description="COM_ADMIN_USER_FIELD_EMAIL_DESC"
+					required="true"
+					size="30"
+					class="inputbox"
+					validate="email" />
+			<field
+					name="company"
+					type="text"
+					required="true"
+					default=""
+					label="Enter some text"
+					description=""
+					size="10" />
+			<field
+					name="country"
+					type="text"
+					required="true"
+					default=""
+					label="Enter some text"
+					description=""
+					size="10" />
+			<field
+					name="address"
+					type="text"
+					required="true"
+					default=""
+					label="Enter some text"
+					description=""
+					size="10" />
+			<field
+					name="productType"
+					type="text"
+					required="true"
+					default=""
+					label="Enter some text"
+					description=""
+					size="10" />
+			<field
+					name="serialNumber"
+					type="text"
+					required="true"
+					default=""
+					label="Enter some text"
+					description=""
+					size="10" />
+			<field
+					name="purchasedFrom"
+					type="text"
+					required="true"
+					default=""
+					label="Enter some text"
+					description=""
+					size="10" />
+			<field
+					name="purchaseDate"
+					type="calendar"
+					default="NOW"
 					required="true"
 					label="COM_REGISTRATION_LASTNAME_LABEL"
 					description="COM_REGISTRATION_LASTNAME_DESC" />

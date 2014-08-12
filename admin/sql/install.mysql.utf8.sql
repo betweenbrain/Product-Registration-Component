@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS `#__registrations` (
   `productType` varchar(100) NOT NULL DEFAULT '',
   `serialNumber` varchar(100) NOT NULL DEFAULT '',
   `purchasedFrom` varchar(100) NOT NULL DEFAULT '',
-  `purchasedDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `purchaseDate` datetime NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
