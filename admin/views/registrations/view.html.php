@@ -31,6 +31,12 @@ class RegistrationViewRegistrations extends JViewLegacy
 		$this->columns = $this->get('ColumnNames');
 		$this->form    = $this->get('Form');
 		$this->items   = $this->get('Items');
+		$this->state   = $this->get('State');
+
+		//Following variables used more than once
+		$this->startDate = $this->state->get('date.start');
+		$this->endDate   = $this->state->get('date.end');
+
 		parent::display($tpl);
 	}
 }

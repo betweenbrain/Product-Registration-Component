@@ -31,6 +31,15 @@
 		<input type="hidden" name="option" value="com_registration" />
 		<?php echo JHtml::_('form.token'); ?>
 	</form>
+
+	<form action="index.php" method="post" name="adminForm">
+		<input type="submit" value="Generate CSV">
+		<input type="hidden" name="startDate" value="<?php echo $this->startDate ?>" />
+		<input type="hidden" name="endDate" value="<?php echo $this->endDate ?>" />
+		<input type="hidden" name="option" value="com_registration" />
+		<input type="hidden" name="task" value="registrations.generatecsv" />
+	</form>
+<?php echo JHtml::_('form.token'); ?>
 <?php if ($this->items) : ?>
 	<table class="table table-striped">
 		<tbody>
