@@ -90,4 +90,33 @@ class RegistrationModelRegistrations extends JModelList
 
 		return $items;
 	}
+
+	/**
+	 * Get database columns
+	 * 
+	 * @return mixed
+	 */
+	public function getColumns()
+	{
+		// Get the table object from the model.
+		$table = $this->getTable();
+
+		return $table->getFields();
+	}
+
+	/**
+	 * Gets the database table
+	 *
+	 * @param string $type
+	 * @param string $prefix
+	 * @param array  $config
+	 *
+	 * @return mixed
+	 */
+	public function getTable($type = 'Registration', $prefix = 'RegistrationTable', $config = array())
+	{
+		$this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
+
+		return JTable::getInstance($type, $prefix, $config);
+	}
 }
