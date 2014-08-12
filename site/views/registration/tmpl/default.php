@@ -18,12 +18,8 @@
 			echo $field->input;
 		else:
 			?>
-
 			<?php echo $field->label; ?>
-
-
 			<?php echo $field->input ?>
-
 		<?php
 		endif;
 	endforeach;
