@@ -30,7 +30,6 @@ class RegistrationModelRegistrations extends JModelList
 		}
 
 		return $form;
-
 	}
 
 	/**
@@ -45,7 +44,8 @@ class RegistrationModelRegistrations extends JModelList
 		$db    = $this->getDbo();
 		$query = $db->getQuery(true);
 
-		$input = JFactory::getApplication()->input->get('jform', array(), 'ARRAY');
+		$start = $this->state->get('date.start');
+		$end   = $this->state->get('date.end');
 
 		$query
 			->select($db->quoteName(
@@ -65,8 +65,8 @@ class RegistrationModelRegistrations extends JModelList
 				)
 			)
 			->from($db->quoteName('#__registrations'))
-			->where($db->quoteName('purchaseDate') . ' > ' . $db->quote($input['registrations']['startDate'])
-				. ' AND ' . $db->quoteName('purchaseDate') . ' < ' . $db->quote($input['registrations']['endDate']));
+			->where($db->quoteName('purchaseDate') . ' > ' . $db->quote($start)
+				. ' AND ' . $db->quoteName('purchaseDate') . ' < ' . $db->quote($end));
 
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
@@ -124,5 +124,32 @@ class RegistrationModelRegistrations extends JModelList
 		$this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
 
 		return JTable::getInstance($type, $prefix, $config);
+	}
+
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 */
+	protected function populateState($ordering = null, $direction = null)
+	{
+		$input = JFactory::getApplication()->input->get('jform', array(), 'ARRAY');
+
+		$app = JFactory::getApplication('administrator');
+
+		if (array_key_exists('registrations', $input))
+		{
+			if (array_key_exists('startDate', $input['registrations']))
+			{
+				$startDate = $app->setUserState($this->context . '.date.start', $input['registrations']['startDate']);
+				$this->setState('date.start', $startDate);
+			}
+
+			if (array_key_exists('endDate', $input['registrations']))
+			{
+				$endDate = $app->setUserState($this->context . '.date.end', $input['registrations']['endDate']);
+				$this->setState('date.end', $endDate);
+			}
+		}
 	}
 }
