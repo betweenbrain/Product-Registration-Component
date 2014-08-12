@@ -35,7 +35,7 @@
 	<table class="table table-striped">
 		<tbody>
 		<thead>
-		<?php foreach ($this->columns as $column => $values) : ?>
+		<?php foreach ($this->columns as $column) : ?>
 			<th><?php echo $column ?></th>
 		<?php endforeach ?>
 		</thead>

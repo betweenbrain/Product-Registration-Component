@@ -51,6 +51,7 @@ class RegistrationModelRegistrations extends JModelList
 		$query
 			->select($db->quoteName(
 					array(
+						'id',
 						'firstName',
 						'lastName',
 						'email',
@@ -93,15 +94,20 @@ class RegistrationModelRegistrations extends JModelList
 
 	/**
 	 * Get database columns
-	 * 
+	 *
 	 * @return mixed
 	 */
-	public function getColumns()
+	public function getColumnNames()
 	{
 		// Get the table object from the model.
-		$table = $this->getTable();
+		$table   = $this->getTable();
+		$pattern = '/[A-Z]/';
+		foreach ($table->getFields() as $field => $values)
+		{
+			$fields[] = ucwords(preg_replace($pattern, ' $0', $field));
+		}
 
-		return $table->getFields();
+		return $fields;
 	}
 
 	/**

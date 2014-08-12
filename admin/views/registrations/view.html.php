@@ -28,7 +28,7 @@ class RegistrationViewRegistrations extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
-		$this->columns = $this->get('Columns');
+		$this->columns = $this->get('ColumnNames');
 		$this->form    = $this->get('Form');
 		$this->items   = $this->get('Items');
 		parent::display($tpl);
