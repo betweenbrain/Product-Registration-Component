@@ -126,6 +126,35 @@ class RegistrationModelRegistrations extends JModelList
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
+	public function generatecsv()
+	{
+		$input = JFactory::getApplication()->input;
+		$start = $input->get('startDate');
+		$end   = $input->get('endDate');
+
+		header('Content-Type: text/csv; charset=utf-8');
+		header('Content-Disposition: attachment; filename=product-registrations-' . $start . '-' . $end . '.csv');
+
+		// create a file pointer connected to the output stream
+		$output = fopen('php://output', 'w');
+
+		// output the column headings
+		fputcsv($output, $this->getColumnNames());
+
+		// loop over the rows, outputting them
+		foreach ($this->getItems() as $item)
+		{
+			fputcsv($output, (array) $item);
+		}
+
+		// Close file pointer
+		fclose($output);
+
+		// Prevent further output
+		exit();
+
+	}
+
 	/**
 	 * Method to auto-populate the model state.
 	 *
