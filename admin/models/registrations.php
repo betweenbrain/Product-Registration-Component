@@ -33,19 +33,19 @@ class RegistrationModelRegistrations extends JModelList
 	}
 
 	/**
-	 * Build an SQL query to load the list data.
+	 * Get the items
 	 *
-	 * @return    JDatabaseQuery
-	 * @since    1.6
+	 * @return mixed
 	 */
-	protected function getListQuery()
+	public function getItems()
 	{
 		// Create a new query object.
 		$db    = $this->getDbo();
 		$query = $db->getQuery(true);
 
-		$start = $this->state->get('date.start');
-		$end   = $this->state->get('date.end');
+		$session = JFactory::getSession();
+		$start   = $session->get('com_registration.registrations.date.start');
+		$end     = $session->get('com_registration.registrations.date.end');
 
 		$query
 			->select($db->quoteName(
@@ -65,31 +65,12 @@ class RegistrationModelRegistrations extends JModelList
 				)
 			)
 			->from($db->quoteName('#__registrations'))
-			->where($db->quoteName('purchaseDate') . ' > ' . $db->quote($start)
-				. ' AND ' . $db->quoteName('purchaseDate') . ' < ' . $db->quote($end));
+			->where($db->quoteName('purchaseDate') . ' >= ' . $db->quote($start)
+				. ' AND ' . $db->quoteName('purchaseDate') . ' <= ' . $db->quote($end));
 
-		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering');
-		$orderDirn = $this->state->get('list.direction');
+		$db->setQuery($query);
 
-		if ($orderCol && $orderDirn)
-		{
-			$query->order($db->escape($orderCol . ' ' . $orderDirn));
-		}
-
-		return $query;
-	}
-
-	/**
-	 *
-	 *
-	 * @return mixed
-	 */
-	public function getItems()
-	{
-		$items = parent::getItems();
-
-		return $items;
+		return $db->loadRowList();
 	}
 
 	/**
@@ -131,9 +112,9 @@ class RegistrationModelRegistrations extends JModelList
 	 */
 	public function getCsv()
 	{
-		$input = JFactory::getApplication()->input;
-		$start = $input->get('startDate');
-		$end   = $input->get('endDate');
+		$session = JFactory::getSession();
+		$start   = $session->get('com_registration.registrations.date.start');
+		$end     = $session->get('com_registration.registrations.date.end');
 
 		header('Content-Type: text/csv; charset=utf-8');
 		header('Content-Disposition: attachment; filename=product-registrations-' . $start . '-' . $end . '.csv');
@@ -155,7 +136,6 @@ class RegistrationModelRegistrations extends JModelList
 
 		// Prevent further output
 		exit();
-
 	}
 
 	/**
@@ -165,23 +145,22 @@ class RegistrationModelRegistrations extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
 	{
-		$input = JFactory::getApplication()->input->get('jform', array(), 'ARRAY');
+		$input   = JFactory::getApplication()->input;
+		$session = JFactory::getSession();
 
-		$app = JFactory::getApplication('administrator');
+		// Get the form data
+		$formData  = new JRegistry($input->get('jform', '', 'array'));
+		$startDate = $formData->get('startDate', null);
+		$endDate   = $formData->get('endDate', null);
 
-		if (array_key_exists('registrations', $input))
+		if ($startDate)
 		{
-			if (array_key_exists('startDate', $input['registrations']))
-			{
-				$startDate = $app->setUserState($this->context . '.date.start', $input['registrations']['startDate']);
-				$this->setState('date.start', $startDate);
-			}
-
-			if (array_key_exists('endDate', $input['registrations']))
-			{
-				$endDate = $app->setUserState($this->context . '.date.end', $input['registrations']['endDate']);
-				$this->setState('date.end', $endDate);
-			}
+			$session->set($this->context . '.date.start', $startDate);
 		}
+		if ($endDate)
+		{
+			$session->set($this->context . '.date.end', $endDate);
+		}
+
 	}
 }
