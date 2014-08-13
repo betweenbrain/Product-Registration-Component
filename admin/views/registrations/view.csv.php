@@ -28,6 +28,6 @@ class RegistrationViewRegistrations extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
-		$this->generatecsv();
+		$this->get('Csv');
 	}
 }

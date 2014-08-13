@@ -126,7 +126,10 @@ class RegistrationModelRegistrations extends JModelList
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
-	public function generatecsv()
+	/**
+	 * Generates a CSV file
+	 */
+	public function getCsv()
 	{
 		$input = JFactory::getApplication()->input;
 		$start = $input->get('startDate');
