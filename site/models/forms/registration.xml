@@ -30,56 +30,56 @@
 					type="text"
 					required="true"
 					default=""
-					label="Enter some text"
-					description=""
+					label="COM_REGISTRATION_COMPANY_LABEL"
+					description="COM_REGISTRATION_COMPANY_LABEL"
 					size="10" />
 			<field
 					name="country"
 					type="text"
 					required="true"
 					default=""
-					label="Enter some text"
-					description=""
+					label="COM_REGISTRATION_COUNTRY_LABEL"
+					description="COM_REGISTRATION_COUNTRY_LABEL"
 					size="10" />
 			<field
 					name="address"
 					type="text"
 					required="true"
 					default=""
-					label="Enter some text"
-					description=""
+					label="COM_REGISTRATION_ADDRESS_LABEL"
+					description="COM_REGISTRATION_ADDRESS_DESC"
 					size="10" />
 			<field
 					name="productType"
 					type="text"
 					required="true"
 					default=""
-					label="Enter some text"
-					description=""
+					label="COM_REGISTRATION_PRODUCT_TYPE_LABEL"
+					description="COM_REGISTRATION_PRODUCT_TYPE_DESC"
 					size="10" />
 			<field
 					name="serialNumber"
 					type="text"
 					required="true"
 					default=""
-					label="Enter some text"
-					description=""
+					label="COM_REGISTRATION_SERIAL_NUMBER_LABEL"
+					description="COM_REGISTRATION_SERIAL_NUMBER_DESC"
 					size="10" />
 			<field
 					name="purchasedFrom"
 					type="text"
 					required="true"
 					default=""
-					label="Enter some text"
-					description=""
+					label="COM_REGISTRATION_PURCHASED_FROM_LABEL"
+					description="COM_REGISTRATION_PURCHASED_FROM_DESC"
 					size="10" />
 			<field
 					name="purchaseDate"
 					type="calendar"
 					default="NOW"
 					required="true"
-					label="COM_REGISTRATION_LASTNAME_LABEL"
-					description="COM_REGISTRATION_LASTNAME_DESC" />
+					label="COM_REGISTRATION_PURCHASED_DATE_LABEL"
+					description="COM_REGISTRATION_PURCHASED_DATE_DESC" />
 		</fieldset>
 	</fields>
 </form>
