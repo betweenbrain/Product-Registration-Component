@@ -28,16 +28,15 @@ class RegistrationViewRegistrations extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
-		JToolBarHelper::title( JText::_( 'COM_REGISTRATION_ADMIN_MENU'), 'generic.png' );
+		JToolBarHelper::title(JText::_('COM_REGISTRATION_ADMIN_MENU'), 'generic.png');
 
 		$this->columns = $this->get('ColumnNames');
 		$this->form    = $this->get('Form');
 		$this->items   = $this->get('Items');
-		$this->state   = $this->get('State');
 
-		//Following variables used more than once
-		$this->startDate = $this->state->get('date.start');
-		$this->endDate   = $this->state->get('date.end');
+		$session         = JFactory::getSession();
+		$this->startDate = $session->get('com_registration.registrations.date.start');
+		$this->endDate   = $session->get('com_registration.registrations.date.end');
 
 		parent::display($tpl);
 	}

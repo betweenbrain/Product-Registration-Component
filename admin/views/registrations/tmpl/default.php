@@ -11,36 +11,35 @@
 
 ?>
 	<form action="index.php" method="post" name="adminForm">
-		<?php
-		// Iterate through the fields and display them.
-		foreach ($this->form->getFieldset() as $field)
-		{
-			// If the field is hidden, only use the input.
-			if ($field->hidden)
-			{
-				echo $field->input;
-			}
-			else
-			{
-				echo $field->label;
-				echo $field->input;
-			}
-		}
-		?>
+		<div class="row-fluid">
+			<?php foreach ($this->form->getFieldset() as $field) : ?>
+				<?php // If the field is hidden, only use the input.
+				if ($field->hidden)
+				{
+					echo $field->input;
+				}
+				else
+				{
+					?>
+					<div class="span3">
+						<?php echo $field->label; ?>
+						<?php echo $field->input; ?>
+					</div>
+				<?php } ?>
+			<?php endforeach ?>
+		</div>
 		<input type="submit">
 		<input type="hidden" name="option" value="com_registration" />
 		<?php echo JHtml::_('form.token'); ?>
 	</form>
-
+<?php echo JHtml::_('form.token'); ?>
+<?php if ($this->items) : ?>
+	<h2>Showing <?php echo $this->startDate?> - <?php echo $this->endDate?></h2>
 	<form action="index.php" method="post" name="adminForm">
 		<input type="submit" value="Generate CSV">
-		<input type="hidden" name="startDate" value="<?php echo $this->startDate ?>" />
-		<input type="hidden" name="endDate" value="<?php echo $this->endDate ?>" />
 		<input type="hidden" name="option" value="com_registration" />
 		<input type="hidden" name="format" value="csv" />
 	</form>
-<?php echo JHtml::_('form.token'); ?>
-<?php if ($this->items) : ?>
 	<table class="table table-striped">
 		<tbody>
 		<thead>
