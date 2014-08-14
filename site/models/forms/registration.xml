@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<fields
-			name="registration">
+			name="registration"
+			addfieldpath="/components/com_registration/elements">
 		<fieldset
 				name="registration">
 			<field
@@ -35,12 +36,11 @@
 					size="10" />
 			<field
 					name="country"
-					type="text"
+					type="country"
 					required="true"
 					default=""
 					label="COM_REGISTRATION_COUNTRY_LABEL"
-					description="COM_REGISTRATION_COUNTRY_LABEL"
-					size="10" />
+					description="COM_REGISTRATION_COUNTRY_LABEL" />
 			<field
 					name="address"
 					type="text"
