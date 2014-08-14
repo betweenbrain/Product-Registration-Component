@@ -37,7 +37,7 @@
 	</languages>
 
 	<administration>
-		<menu>COM_REGISTRATION</menu>
+		<menu>COM_REGISTRATION_ADMIN_MENU</menu>
 
 		<files folder="admin">
 			<folder>models</folder>
