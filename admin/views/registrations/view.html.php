@@ -28,6 +28,8 @@ class RegistrationViewRegistrations extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
+		JToolBarHelper::title( JText::_( 'COM_REGISTRATION_ADMIN_MENU'), 'generic.png' );
+
 		$this->columns = $this->get('ColumnNames');
 		$this->form    = $this->get('Form');
 		$this->items   = $this->get('Items');
