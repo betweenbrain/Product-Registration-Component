@@ -10,20 +10,18 @@
  */
 ?>
 <form action="index.php" method="post" name="adminForm">
-	<?php
-	// Iterate through the fields and display them.
-	foreach ($this->form->getFieldset() as $field):
-		// If the field is hidden, only use the input.
-		if ($field->hidden):
-			echo $field->input;
-		else:
-			?>
-			<?php echo $field->label; ?>
-			<?php echo $field->input ?>
-		<?php
-		endif;
-	endforeach;
-	?>
+	<?php foreach ($this->form->getFieldset() as $field): ?>
+		<div class="row-fluid">
+			<?php if ($field->hidden):
+				echo $field->input;
+			else:
+				?>
+				<?php echo $field->label; ?>
+				<?php echo $field->input ?>
+			<?php
+			endif; ?>
+		</div>
+	<?php endforeach; ?>
 	<input type="submit">
 	<input type="hidden" name="option" value="com_registration" />
 	<input type="hidden" name="task" value="registration.save" />
