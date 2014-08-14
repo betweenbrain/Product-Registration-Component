@@ -139,6 +139,32 @@ class RegistrationModelRegistrations extends JModelList
 	}
 
 	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return	mixed	The data for the form.
+	 *
+	 * @since	3.2
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		$data = JFactory::getApplication()->getUserState($this->context, new stdClass);
+
+		// Pre-fill the list options
+		if (!property_exists($data, 'list'))
+		{
+			$data->list = array(
+				'direction' => null,
+				'limit'     => null,
+				'ordering'  => null,
+				'start'     => null
+			);
+		}
+
+		return $data;
+	}
+
+	/**
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
