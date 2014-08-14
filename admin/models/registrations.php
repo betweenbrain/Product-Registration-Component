@@ -15,6 +15,21 @@ class RegistrationModelRegistrations extends JModelList
 {
 
 	/**
+	 * Constructor.
+	 *
+	 * @param   array $config An optional associative array of configuration settings.
+	 *
+	 * @see     JModelLegacy
+	 * @since   12.2
+	 */
+	public function __construct($config = array())
+	{
+		parent::__construct($config);
+
+		$this->setSession();
+	}
+
+	/**
 	 * @param array $data
 	 * @param bool  $loadData
 	 *
@@ -141,9 +156,9 @@ class RegistrationModelRegistrations extends JModelList
 	/**
 	 * Method to get the data that should be injected in the form.
 	 *
-	 * @return	mixed	The data for the form.
+	 * @return    mixed    The data for the form.
 	 *
-	 * @since	3.2
+	 * @since    3.2
 	 */
 	protected function loadFormData()
 	{
@@ -165,11 +180,10 @@ class RegistrationModelRegistrations extends JModelList
 	}
 
 	/**
-	 * Method to auto-populate the model state.
+	 * Method to populate the user session.
 	 *
-	 * Note. Calling getState in this method will result in recursion.
 	 */
-	protected function populateState($ordering = null, $direction = null)
+	protected function setSession()
 	{
 		$input   = JFactory::getApplication()->input;
 		$session = JFactory::getSession();
