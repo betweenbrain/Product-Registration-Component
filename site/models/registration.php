@@ -44,6 +44,33 @@ class RegistrationModelRegistration extends JModelForm
 	{
 		$data = JFactory::getApplication()->getUserState('com_registration.edit.registration.data', array());
 
+		$null = array('productType', 'serialNumber', 'purchasedFrom');
+
+		foreach ($null as $unwanted_key)
+		{
+			$this->recursive_unset($data, $unwanted_key);
+		}
+
 		return $data;
+	}
+
+	/**
+	 * Unset unwanted keys, useful for user data
+	 *
+	 * @param $array
+	 * @param $unwanted_key
+	 */
+	function recursive_unset(&$array, $unwanted_key)
+	{
+		unset($array[$unwanted_key]);
+
+		foreach ($array as &$value)
+		{
+			if (is_array($value))
+			{
+				$this->recursive_unset($value, $unwanted_key);
+			}
+		}
+
 	}
 }
