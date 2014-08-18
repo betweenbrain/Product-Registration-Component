@@ -27,8 +27,7 @@ class RegistrationViewRegistration extends JViewLegacy
 	{
 		$this->form = $this->get('Form');
 		$menu       = JFactory::getApplication()->getMenu();
-		$item       = $menu->getActive();
-		$this->link = $item->link;
+		$this->menu = $menu->getActive();
 
 		parent::display($tpl);
 	}

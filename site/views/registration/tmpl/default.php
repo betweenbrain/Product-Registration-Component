@@ -9,7 +9,7 @@
  * License    GNU GPL v2 or later
  */
 ?>
-<form action="<?php echo $this->link ?>" method="post" name="adminForm">
+<form action="<?php echo $this->menu->link ?>" method="post" name="adminForm">
 	<?php foreach ($this->form->getFieldset() as $field): ?>
 		<div class="row-fluid">
 			<?php if ($field->hidden):
