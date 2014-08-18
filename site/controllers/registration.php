@@ -80,12 +80,12 @@ class RegistrationControllerRegistration extends RegistrationController
 		// Now update the loaded data to the database via a function in the model
 		$registration = $model->submit($data);
 
+		// Save the data in the session.
+		$app->setUserState('com_registration.edit.registration.data', $data);
+
 		// Check for errors.
 		if ($registration === false)
 		{
-			// Save the data in the session.
-			$app->setUserState('com_registration.edit.registration.data', $data);
-
 			// Redirect back to the edit screen.
 			$this->setMessage(JText::sprintf('Save failed', $model->getError()), 'warning');
 			$this->setRedirect(JRoute::_('index.php?option=com_registration', false));
@@ -93,18 +93,11 @@ class RegistrationControllerRegistration extends RegistrationController
 			return false;
 		}
 
-		// Clear the profile id from the session.
-		$app->setUserState('com_registration.edit.registration.id', null);
-
 		// Redirect to the list screen.
 		$this->setMessage(JText::_('COM_REGISTRATION_ITEM_SAVED_SUCCESSFULLY'));
 		$menu = JFactory::getApplication()->getMenu();
 		$item = $menu->getActive();
 		$url  = (empty($item->link) ? 'index.php?option=com_registration' : $item->link);
 		$this->setRedirect(JRoute::_($url, false));
-
-		// Flush the data from the session.
-		$app->setUserState('com_registration.edit.registration.data', null);
-
 	}
 }

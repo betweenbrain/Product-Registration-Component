@@ -33,4 +33,17 @@ class RegistrationModelRegistration extends JModelForm
 		return $form;
 
 	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return    mixed    The data for the form.
+	 * @since    1.6
+	 */
+	protected function loadFormData()
+	{
+		$data = JFactory::getApplication()->getUserState('com_registration.edit.registration.data', array());
+
+		return $data;
+	}
 }
