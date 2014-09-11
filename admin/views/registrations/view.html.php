@@ -30,6 +30,11 @@ class RegistrationViewRegistrations extends JViewLegacy
 	{
 		JToolBarHelper::title(JText::_('COM_REGISTRATION_ADMIN_MENU'), 'generic.png');
 
+		if (JFactory::getUser()->authorise('core.admin', 'com_registration'))
+		{
+			JToolBarHelper::preferences('com_registration');
+		}
+
 		$this->columns = $this->get('ColumnNames');
 		$this->form    = $this->get('Form');
 		$this->items   = $this->get('Items');

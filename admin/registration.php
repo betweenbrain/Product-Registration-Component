@@ -9,6 +9,12 @@
  * License    GNU GPL v2 or later
  */
 
+// Access check: is this user allowed to access the backend of this component?
+if (!JFactory::getUser()->authorise('core.manage', 'com_registration'))
+{
+	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
 // Get an instance of the controller prefixed by Registration
 $controller = JControllerLegacy::getInstance('Registration');
 

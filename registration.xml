@@ -45,6 +45,8 @@
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
 			<filename>controller.php</filename>
 			<filename>registration.php</filename>
 		</files>
