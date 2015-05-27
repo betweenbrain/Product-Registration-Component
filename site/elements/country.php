@@ -240,6 +240,7 @@ class JFormFieldCountry extends JFormFieldList
 			"Suriname"                                     => "Suriname",
 			"Svalbard And Jan Mayen Islands"               => "Svalbard And Jan Mayen Islands",
 			"Swaziland"                                    => "Swaziland",
+			"Sweden"				       => "Sweden",
 			"Switzerland"                                  => "Switzerland",
 			"Taiwan"                                       => "Taiwan",
 			"Tajikistan"                                   => "Tajikistan",
